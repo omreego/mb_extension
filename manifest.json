@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Metabase API Extension",
+  "version": "1.0",
+  "description": "Chrome extension for interacting with Metabase API",
+  "permissions": [
+    "storage",
+    "cookies",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.metabase.com/*",
+    "*://*/api/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.metabase.com/*", "*://*/api/*"],
+      "js": ["contentScript.js"]
+    }
+  ]
+} 

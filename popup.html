@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metabase API Extension</title>
+  <style>
+    body {
+      width: 400px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background-color: #509EE3;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3B7EC0;
+    }
+    .status {
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    .success {
+      background-color: #84BB4C;
+      color: white;
+    }
+    .error {
+      background-color: #EF8C8C;
+      color: white;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    input, textarea {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    #responseArea {
+      background-color: #f5f5f5;
+      padding: 10px;
+      border-radius: 4px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    label {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Metabase API Extension</h2>
+    <div id="connectionStatus"></div>
+    <button id="checkSession">Check Session</button>
+    <div id="status" class="status" style="display: none;"></div>
+    
+    <div class="form-group">
+      <label for="endpoint">API Endpoint:</label>
+      <input type="text" id="endpoint" placeholder="https://prod.api.faros.ai/reports/metabase/api/..." />
+    </div>
+
+    <div class="form-group">
+      <label for="payload">Request Payload (JSON):</label>
+      <textarea id="payload" placeholder='{
+  "key": "value"
+}'></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="method">HTTP Method:</label>
+      <select id="method">
+        <option value="GET">GET</option>
+        <option value="POST">POST</option>
+        <option value="PUT">PUT</option>
+        <option value="DELETE">DELETE</option>
+      </select>
+    </div>
+
+    <button id="sendRequest">Send Request</button>
+
+    <div id="responseArea"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html> 
